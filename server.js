@@ -12,7 +12,9 @@ mongoose.connect(process.env.DATABASE, { useNewUrlParser: true, useUnifiedTopolo
 })
 const app = express(); 
 app.use(express.json()); 
-
+app.get("/",(req,res,next)=> {
+  res.send("App is running perfectly"); 
+}); 
 app.post('/api/users',async (req,res,next) => { 
   const user = await User.create(req.body); 
   res.status(201).json({
